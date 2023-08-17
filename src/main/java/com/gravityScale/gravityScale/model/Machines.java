@@ -1,43 +1,55 @@
 package com.gravityScale.gravityScale.model;
 
+
 import java.time.LocalDateTime;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.apache.catalina.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
+@Table(name= "Machines")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
-@Table(name = "users")
-public class Users {
+public class Machines {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name = "user_name")
-	private String userName;
+	@ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private User user;
 	
-	@Column(name = "mobile_no")
-	private String mobileNo;
+	@Column(name = "machine_name")
+	private String machineName;
 	
-	@Column(name = "email_id")
-	private String emailId;
+	@Column(name = "machine_model")
+	private String machineModel;
 	
-	@Column(name = "role_id")
-	private Role role;
+	@Column(name = "warrentyPeriod")
+	private int warrentyPeriod;
+	
+	@Column(name = "stamped_on")
+	private Date stampedOn;
+	
+	@Column(name = "next_stamping_due")
+	private Date nextStampingDue;
 	
 	@Column(name = "status")
 	private boolean status;
@@ -47,6 +59,5 @@ public class Users {
 	
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
-	
 
 }
