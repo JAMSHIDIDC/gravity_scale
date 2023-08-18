@@ -3,6 +3,8 @@ package com.gravityScale.gravityScale.model;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +38,7 @@ public class Users {
 	@Column(name = "email_id")
 	private String emailId;
 	
-	@Column(name = "role_id")
+	@Enumerated(EnumType.STRING)
 	private Role role;
 	
 	@Column(name = "status")
@@ -48,5 +50,9 @@ public class Users {
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
 	
+	
+	public enum Role {
+		ADMIN, SHOPOWNER
+    }
 
 }

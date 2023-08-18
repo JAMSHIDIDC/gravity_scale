@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.apache.catalina.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,7 +33,7 @@ public class Machines {
 	
 	@ManyToOne
     @JoinColumn(name="user_id", nullable=false)
-    private User user;
+    private Users user;
 	
 	@Column(name = "machine_name")
 	private String machineName;
